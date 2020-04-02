@@ -7,13 +7,13 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
     StyleSheet,
     Text,
     View,
 } from 'react-native';
-import { useRoute, RouteProp } from '@react-navigation/native';
+import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamsList } from '../App';
 
 type FirstScreenRouteProp = RouteProp<RootStackParamsList, 'First'>;
@@ -24,7 +24,14 @@ function FirstScreen({
     route: FirstScreenRouteProp,
 }) {
     // const route = useRoute<FirstScreenRouteProp>();
+    const navigation = useNavigation();
     const params = route.params;
+
+    useEffect(() => {
+        navigation.setOptions({
+            headerShown: false,
+        })
+    }, [navigation]);
 
     return (
         <View>

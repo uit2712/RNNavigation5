@@ -74,6 +74,9 @@ function App() {
                     initialParams={{
                         title: 'First Screen',
                     }}
+                    options={{
+                        // headerShown: false,
+                    }}
                 />
             </Stack.Navigator>
         </NavigationContainer>
