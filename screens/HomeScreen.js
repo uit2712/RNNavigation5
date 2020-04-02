@@ -30,6 +30,12 @@ function HomeScreen() {
                 title='Navigate to First screen'
                 onPress={() => navigation.navigate('First', params)}
             />
+            <Button
+                title='Update title'
+                onPress={() => navigation.setParams({
+                    title: 'Hihihi'
+                })}
+            />
         </View>
     );
 };
