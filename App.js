@@ -12,10 +12,27 @@ import {
     StyleSheet,
     Text,
 } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './screens/HomeScreen';
+import FirstScreen from './screens/FirstScreen';
+
+const Stack = createStackNavigator();
 
 function App() {
     return (
-        <Text>Hello world!</Text>
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen
+                    name='Home'
+                    component={HomeScreen}
+                />
+                <Stack.Screen
+                    name='First'
+                    component={FirstScreen}
+                />
+            </Stack.Navigator>
+        </NavigationContainer>
     );
 };
 
