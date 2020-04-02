@@ -14,15 +14,18 @@ import {
     View,
     Button,
 } from 'react-native';
-import { useNavigation, NavigationProp } from '@react-navigation/native';
+import { useNavigation, NavigationProp, RouteProp } from '@react-navigation/native';
 import { RootStackParamsList, FirstScreenParams } from '../App';
 
 type HomeScreenNavigationProp = NavigationProp<RootStackParamsList, 'Home'>;
+type HomeScreenRouteProp = RouteProp<RootStackParamsList, 'Home'>;
 
 function HomeScreen({
-    navigation
+    navigation,
+    route,
 }: {
-    navigation: HomeScreenNavigationProp
+    navigation: HomeScreenNavigationProp,
+    route: HomeScreenRouteProp,
 }) {
     // const navigation = useNavigation<HomeScreenNavigationProp>();
     const params: FirstScreenParams = {
@@ -36,6 +39,12 @@ function HomeScreen({
             <Button
                 title='Navigate to First screen'
                 onPress={() => navigation.navigate('First', params)}
+            />
+            <Button
+                title='Update title'
+                onPress={() => navigation.setParams({
+                    title: 'Hihihi'
+                })}
             />
         </View>
     );
