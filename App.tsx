@@ -13,11 +13,14 @@ import {
     Text,
     View,
     Image,
+    Button,
+    ToastAndroid,
 } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './screens/HomeScreen';
 import FirstScreen from './screens/FirstScreen';
+import AntDesignIcon from 'react-native-vector-icons/AntDesign'
 
 // list all screens (parameters)
 export type HomeScreenParams = {
@@ -59,6 +62,13 @@ function App() {
                         </View>
                     ),
                     headerTitleAlign: 'center',
+                    headerBackImage: ({ tintColor }) => (
+                        <AntDesignIcon
+                            name='leftcircle'
+                            size={25}
+                            color={tintColor}
+                        />
+                    )
                 })}
             >
                 <Stack.Screen

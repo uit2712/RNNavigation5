@@ -15,6 +15,8 @@ import {
 } from 'react-native';
 import { useRoute, RouteProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamsList } from '../App';
+import { Button } from 'react-native';
+import { ToastAndroid } from 'react-native';
 
 type FirstScreenRouteProp = RouteProp<RootStackParamsList, 'First'>;
 
@@ -29,7 +31,12 @@ function FirstScreen({
 
     useEffect(() => {
         navigation.setOptions({
-            headerShown: false,
+            headerRight: () => (
+                <Button
+                    title='Right button'
+                    onPress={() => ToastAndroid.show('Right button pressed', ToastAndroid.SHORT)}
+                />
+            ),
         })
     }, [navigation]);
 
