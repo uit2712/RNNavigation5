@@ -13,11 +13,14 @@ import {
     Text,
     View,
     Image,
+    ToastAndroid,
 } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './screens/HomeScreen';
 import FirstScreen from './screens/FirstScreen';
+import { Button } from 'react-native';
+import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 
 const Stack = createStackNavigator();
 
@@ -43,6 +46,13 @@ function App() {
                         </View>
                     ),
                     headerTitleAlign: 'center',
+                    headerBackImage: ({ tintColor }) => (
+                        <AntDesignIcon
+                            name='leftcircle'
+                            size={25}
+                            color={tintColor}
+                        />
+                    ),
                 })}
             >
                 <Stack.Screen
@@ -59,7 +69,12 @@ function App() {
                         title: 'First Screen',
                     }}
                     options={{
-                        // headerShown: false,
+                        headerRight: () => (
+                            <Button
+                                title='Right button'
+                                onPress={() => ToastAndroid.show('Right button pressed', ToastAndroid.SHORT)}
+                            />
+                        ),
                     }}
                 />
             </Stack.Navigator>

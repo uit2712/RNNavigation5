@@ -14,6 +14,7 @@ import {
     View,
 } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native';
+import { Button } from 'react-native';
 
 function FirstScreen() {
     const route = useRoute();
@@ -22,7 +23,12 @@ function FirstScreen() {
 
     useEffect(() => {
         navigation.setOptions({
-            headerShown: false,
+            headerRight: () => (
+                <Button
+                    title='Right button changed'
+                    onPress={() => ToastAndroid.show('Right button pressed', ToastAndroid.SHORT)}
+                />
+            ),
         })
     }, [navigation]);
 
