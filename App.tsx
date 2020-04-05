@@ -93,8 +93,17 @@ function StackComponent() {
     );
 };
 
+const rootStackScreens = [
+    ...Array<keyof RootStackParamsList>()
+]
+
+export type RootStackScreenParams = {
+    screen?: typeof rootStackScreens[number];
+    params?: {} | RootStackScreenParams;
+}
+
 export type RootTabParamsList = {
-    Home: RootStackParamsList;
+    Home: RootStackScreenParams;
     Settings: undefined;
 }
 
