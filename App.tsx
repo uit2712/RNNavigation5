@@ -44,59 +44,57 @@ export type RootStackParamsList = {
 const Stack = createStackNavigator<RootStackParamsList>();
 function StackComponent() {
     return (
-        <NavigationContainer>
-            <Stack.Navigator
-                screenOptions={({ route }) => ({
-                    headerTitle: () => (
-                        <View style={{
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                        }}>
-                            <Image
-                                source={{ uri: 'https://cdn.iconscout.com/icon/free/png-512/react-native-555397.png' }}
-                                style={{
-                                    width: 50,
-                                    height: 50
-                                }}
-                            />
-                            <Text>{route.params.title}</Text>
-                        </View>
-                    ),
-                    headerTitleAlign: 'center',
-                    headerBackImage: ({ tintColor }) => (
-                        <AntDesignIcon
-                            name='leftcircle'
-                            size={25}
-                            color={tintColor}
+        <Stack.Navigator
+            screenOptions={({ route }) => ({
+                headerTitle: () => (
+                    <View style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}>
+                        <Image
+                            source={{ uri: 'https://cdn.iconscout.com/icon/free/png-512/react-native-555397.png' }}
+                            style={{
+                                width: 50,
+                                height: 50
+                            }}
                         />
-                    )
-                })}
-            >
-                <Stack.Screen
-                    name='Home'
-                    component={HomeScreen}
-                    initialParams={{
-                        title: 'Home Screen',
-                    }}
-                />
-                <Stack.Screen
-                    name='First'
-                    component={FirstScreen}
-                    initialParams={{
-                        title: 'First Screen',
-                    }}
-                    options={{
-                        // headerShown: false,
-                    }}
-                />
-            </Stack.Navigator>
-        </NavigationContainer>
+                        <Text>{route.params.title}</Text>
+                    </View>
+                ),
+                headerTitleAlign: 'center',
+                headerBackImage: ({ tintColor }) => (
+                    <AntDesignIcon
+                        name='leftcircle'
+                        size={25}
+                        color={tintColor}
+                    />
+                )
+            })}
+        >
+            <Stack.Screen
+                name='Home'
+                component={HomeScreen}
+                initialParams={{
+                    title: 'Home Screen',
+                }}
+            />
+            <Stack.Screen
+                name='First'
+                component={FirstScreen}
+                initialParams={{
+                    title: 'First Screen',
+                }}
+                options={{
+                    // headerShown: false,
+                }}
+            />
+        </Stack.Navigator>
     );
 };
 
 export type RootTabParamsList = {
-    Home: undefined;
+    Home: RootStackParamsList;
     Settings: undefined;
 }
 
@@ -114,7 +112,7 @@ function TabComponent() {
             >
                 <Tab.Screen
                     name='Home'
-                    component={HomeScreen}
+                    component={StackComponent}
                     options={{
                         tabBarIcon: ({ color }) =>
                             <AntDesignIcon
@@ -142,7 +140,7 @@ function TabComponent() {
 }
 
 const styles = StyleSheet.create({
-    
+
 });
 
 export default TabComponent;
