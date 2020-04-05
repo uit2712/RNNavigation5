@@ -20,7 +20,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './screens/HomeScreen';
 import FirstScreen from './screens/FirstScreen';
-import AntDesignIcon from 'react-native-vector-icons/AntDesign'
+import AntDesignIcon from 'react-native-vector-icons/AntDesign';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import SettingsScreen from './screens/SettingsScreen';
 
 // list all screens (parameters)
 export type HomeScreenParams = {
@@ -40,7 +42,7 @@ export type RootStackParamsList = {
 
 const Stack = createStackNavigator<RootStackParamsList>();
 
-function App() {
+function StackComponent() {
     return (
         <NavigationContainer>
             <Stack.Navigator
@@ -93,8 +95,31 @@ function App() {
     );
 };
 
+export type RootTabParamsList = {
+    Home: undefined;
+    Settings: undefined;
+}
+
+const Tab = createBottomTabNavigator<RootTabParamsList>();
+function TabComponent() {
+    return (
+        <NavigationContainer>
+            <Tab.Navigator>
+                <Tab.Screen
+                    name='Home'
+                    component={HomeScreen}
+                />
+                <Tab.Screen
+                    name='Settings'
+                    component={SettingsScreen}
+                />
+            </Tab.Navigator>
+        </NavigationContainer>
+    )
+}
+
 const styles = StyleSheet.create({
     
 });
 
-export default App;
+export default TabComponent;
