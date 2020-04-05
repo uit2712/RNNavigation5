@@ -26,6 +26,17 @@ function SettingsScreen() {
                 title='Navigate to tab Home'
                 onPress={() => navigation.navigate('Home')}
             />
+            <Button
+                title='Navigate to tab Home, to First screen'
+                onPress={() => navigation.navigate('Home', {
+                    screen: 'First',
+                    params: {
+                        title: 'First screen from tab Settings',
+                        message: 'Hello from Settings tab',
+                        id: 8888,
+                    }
+                })}
+            />
         </View>
     );
 };
