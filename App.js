@@ -23,6 +23,7 @@ import { Button } from 'react-native';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import SettingsScreen from './screens/SettingsScreen';
+import FeatherIcon from 'react-native-vector-icons/Feather';
 
 const Stack = createStackNavigator();
 
@@ -88,14 +89,37 @@ const Tab = createBottomTabNavigator();
 function TabComponent() {
     return (
         <NavigationContainer>
-            <Tab.Navigator>
+            <Tab.Navigator
+                tabBarOptions={{
+                    activeBackgroundColor: 'deeppink',
+                    activeTintColor: 'white',
+                    inactiveBackgroundColor: 'white',
+                    inactiveTintColor: 'deeppink'
+                }}
+            >
                 <Tab.Screen
                     name='Home'
                     component={HomeScreen}
+                    options={{
+                        tabBarIcon: ({ color }) =>
+                            <AntDesignIcon
+                                name='home'
+                                size={25}
+                                color={color}
+                            />
+                    }}
                 />
                 <Tab.Screen
                     name='Settings'
                     component={SettingsScreen}
+                    options={{
+                        tabBarIcon: ({ color }) =>
+                            <FeatherIcon
+                                name='settings'
+                                size={25}
+                                color={color}
+                            />
+                    }}
                 />
             </Tab.Navigator>
         </NavigationContainer>
