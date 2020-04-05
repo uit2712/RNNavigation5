@@ -21,10 +21,12 @@ import HomeScreen from './screens/HomeScreen';
 import FirstScreen from './screens/FirstScreen';
 import { Button } from 'react-native';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import SettingsScreen from './screens/SettingsScreen';
 
 const Stack = createStackNavigator();
 
-function App() {
+function StackComponent() {
     return (
         <NavigationContainer>
             <Stack.Navigator
@@ -82,8 +84,26 @@ function App() {
     );
 };
 
+const Tab = createBottomTabNavigator();
+function TabComponent() {
+    return (
+        <NavigationContainer>
+            <Tab.Navigator>
+                <Tab.Screen
+                    name='Home'
+                    component={HomeScreen}
+                />
+                <Tab.Screen
+                    name='Settings'
+                    component={SettingsScreen}
+                />
+            </Tab.Navigator>
+        </NavigationContainer>
+    )
+}
+
 const styles = StyleSheet.create({
     
 });
 
-export default App;
+export default TabComponent;
