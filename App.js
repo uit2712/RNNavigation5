@@ -26,7 +26,6 @@ import SettingsScreen from './screens/SettingsScreen';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
 const Stack = createStackNavigator();
-
 function StackComponent() {
     return (
         <NavigationContainer>

@@ -11,11 +11,22 @@ import React from 'react';
 import {
     StyleSheet,
     Text,
+    View,
+    Button,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 function SettingsScreen() {
+    const navigation = useNavigation();
+
     return (
-        <Text>Settings screen</Text>
+        <View>
+            <Text>Settings screen</Text>
+            <Button
+                title='Navigate to tab Home'
+                onPress={() => navigation.navigate('Home')}
+            />
+        </View>
     );
 };
 
