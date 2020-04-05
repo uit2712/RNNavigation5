@@ -28,59 +28,57 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 const Stack = createStackNavigator();
 function StackComponent() {
     return (
-        <NavigationContainer>
-            <Stack.Navigator
-                screenOptions={({ route }) => ({
-                    headerTitle: () => (
-                        <View style={{
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                        }}>
-                            <Image
-                                source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/640px-React-icon.svg.png' }}
-                                style={{
-                                    width: 50,
-                                    height: 50,
-                                }}
-                            />
-                            <Text>{route.params.title ? route.params.title : route.name}</Text>
-                        </View>
-                    ),
-                    headerTitleAlign: 'center',
-                    headerBackImage: ({ tintColor }) => (
-                        <AntDesignIcon
-                            name='leftcircle'
-                            size={25}
-                            color={tintColor}
+        <Stack.Navigator
+            screenOptions={({ route }) => ({
+                headerTitle: () => (
+                    <View style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}>
+                        <Image
+                            source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/640px-React-icon.svg.png' }}
+                            style={{
+                                width: 50,
+                                height: 50,
+                            }}
+                        />
+                        <Text>{route.params.title ? route.params.title : route.name}</Text>
+                    </View>
+                ),
+                headerTitleAlign: 'center',
+                headerBackImage: ({ tintColor }) => (
+                    <AntDesignIcon
+                        name='leftcircle'
+                        size={25}
+                        color={tintColor}
+                    />
+                ),
+            })}
+        >
+            <Stack.Screen
+                name='Home'
+                component={HomeScreen}
+                initialParams={{
+                    title: 'Home Screen',
+                }}
+            />
+            <Stack.Screen
+                name='First'
+                component={FirstScreen}
+                initialParams={{
+                    title: 'First Screen',
+                }}
+                options={{
+                    headerRight: () => (
+                        <Button
+                            title='Right button'
+                            onPress={() => ToastAndroid.show('Right button pressed', ToastAndroid.SHORT)}
                         />
                     ),
-                })}
-            >
-                <Stack.Screen
-                    name='Home'
-                    component={HomeScreen}
-                    initialParams={{
-                        title: 'Home Screen',
-                    }}
-                />
-                <Stack.Screen
-                    name='First'
-                    component={FirstScreen}
-                    initialParams={{
-                        title: 'First Screen',
-                    }}
-                    options={{
-                        headerRight: () => (
-                            <Button
-                                title='Right button'
-                                onPress={() => ToastAndroid.show('Right button pressed', ToastAndroid.SHORT)}
-                            />
-                        ),
-                    }}
-                />
-            </Stack.Navigator>
-        </NavigationContainer>
+                }}
+            />
+        </Stack.Navigator>
     );
 };
 
@@ -98,7 +96,7 @@ function TabComponent() {
             >
                 <Tab.Screen
                     name='Home'
-                    component={HomeScreen}
+                    component={StackComponent}
                     options={{
                         tabBarIcon: ({ color }) =>
                             <AntDesignIcon
@@ -126,7 +124,7 @@ function TabComponent() {
 }
 
 const styles = StyleSheet.create({
-    
+
 });
 
 export default TabComponent;
